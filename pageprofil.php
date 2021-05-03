@@ -29,13 +29,14 @@ if (!empty($_SESSION)) {
                 </div>
                 <div class="field">
                     <a href="biensuser.php" class="button button is-dark" >
-                        Voir mes articles publiés
+                        Voir mes articles publiészzz
                     </a>
                     <a href="addbien.php" class="button"> Ajouter un article </a>
                     <?php
                     if ($user['role'] === 'ROLE_ADMIN') {
                         echo '<a href="pageadmin.php" class="button"> Accéder à l\'espace administrateur </a>';
                     }
+                    
                     ?>
                 </div>
             </div>
@@ -50,7 +51,7 @@ if (!empty($_SESSION)) {
     <main>
         <p class="lead">Vous ne pouvez pas accéder à votre profil sans vous connecter</p>
         <p class="lead">
-            <a href="login.php" class="button">Se connecter</a>
+            <a href="pageconnexion.php" class="button">Se connecter</a>
         </p>
     </main>
 <?php

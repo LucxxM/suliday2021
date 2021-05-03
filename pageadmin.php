@@ -1,50 +1,64 @@
 <?php require 'inc/header.php'; ?>
 
 <?php
-//! Affichage de tous les utilisateurs. Il faudra une requête SQL qui récupère tous les users, et qui les affiche dans des cartes séparées.
+if (!empty($_SESSION)) {
+    //? 1. On insère l'id de session dans une variable qui va servir pour une requête SQL si il y a un utilisateur connecté
+    $user_id = $_SESSION['id'];
 
-//? Création de ma requête SQL. Vu que j'ai des colonne qui font référence à d'autres tables, je dois ajouter des jointures sur category et author.
-$sqlUsers = "SELECT * FROM users ";
+    //? 2. On réalise une requête SQL de récupération de données (SELECT) qui utilise l'id de l'utilisateur connecté pour récupérer toutes sa ligne dans la BDD
+    $sqlAdmin = "SELECT * FROM users WHERE id = '{$user_id}'";
+    $sqlUser = "SELECT * FROM users WHERE role != 'ROLE_ADMIN' ";
 
-//? Le résultat de ma requête est affiché dans un tableau associatif à l'aide du chaînage de méthodes.
-$users = $connect->query($sqlUsers)->fetchAll(PDO::FETCH_ASSOC);
-?>
+    //? 3. On effectue la requête via PDO sur la base de données.
+    $resultAdmin = $connect->query($sqlAdmin);
+    $resultUser = $connect->query($sqlUser);
+    $users = $resultUser->fetchAll(PDO::FETCH_ASSOC);
+
+    //? 4. On récupère les données avec un fetch, en précisant que l'on souhaite obtenir les données sous forme de tableau associatif (PDO::FETCH_ASSOC)
+    if ($admin = $resultAdmin->fetch(PDO::FETCH_ASSOC)) {
+        // $user = $connect->query($sql)->fetch(PDO::FETCH_ASSOC);
 
 
-<section class="hero is-dark is-small mt-4">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <p class="title">
-            USERS
-          </p>
-        </div>
-      </div>
-    </section>
-    <section class="is-flex is-flex-wrap-wrap">
-        <?php
-        //? Je veux afficher tous mes produits, selon le même modèle, donc je fais une boucle, et j'insère les données dynamiques dans une carte sur laquelle je ferais une boucle. Résultat: J'obtiens autant de cartes que de produits, et toutes les cartes respectent le même format HTML.
-        foreach ($users as $user) {
-        ?>
-        <div class="column is-4">
-          <div class="card is-shady">
-            <div class="card-image">
-            </div>
-            <div class="card-content">
-              <div class="content">
-                <h4><?php echo $user['username'];?></h4>
-                <p><?php echo $user['email']; ?></p>
-                <p><?php echo $user['role']; ?></p>
-                <a class="button is-danger">Supprimer</a>
-                <a class="button is-dark">Editer</a>
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <?php
+        if ($admin['role'] === 'ROLE_USER') {
+            echo '<div class="is-flex is-justify-content-center is-align-content-center"><a href="index.php" class="button is-danger mt-6"> Vous ne pouvez pas accèder à cette page</a></div>';
         }
-        ?>
-    </section>
+        
+        else { ?>
+          <section class="hero is-dark is-small mt-4">
+              <div class="hero-body">
+                <div class="container has-text-centered">
+                <p class="title">
+                    USERS
+                </p>
+                </div>
+              </div>
+          </section>
+          <section class="is-flex is-flex-wrap-wrap">
+              <?php
+              //? Je veux afficher tous mes produits, selon le même modèle, donc je fais une boucle, et j'insère les données dynamiques dans une carte sur laquelle je ferais une boucle. Résultat: J'obtiens autant de cartes que de produits, et toutes les cartes respectent le même format HTML.
+              foreach ($users as $user) {
+              ?>
+              <div class="column is-4">
+              <div class="card is-shady">
+                  <div class="card-image">
+                  </div>
+                  <div class="card-content">
+                  <div class="content">
+                      <h4><?php echo $user['username'];?></h4>
+                      <p><?php echo $user['email']; ?></p>
+                      <p><?php echo $user['role']; ?></p>
+                      <a class="button is-danger">Supprimer</a>
+                      <a class="button is-dark">Editer</a>
+                      
+                  </div>
+                  </div>
+              </div>
+              </div>
+            <?php
+            } 
+            ?>
+          </section>
+
 
     
 
@@ -99,6 +113,9 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <?php
         }
+      }
+    }
+  }
         ?>
     </section>
     <script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
