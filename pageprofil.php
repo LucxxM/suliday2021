@@ -33,7 +33,7 @@ if (!empty($_SESSION)) {
                     </a>
                     <a href="addbien.php" class="button"> Ajouter un article </a>
                     <?php
-                    if ($user['role'] === 'ROLE_ADMIN') {
+                    if ($user['role'] === 'ROLE ADMIN') {
                         echo '<a href="pageadmin.php" class="button"> Accéder à l\'espace administrateur </a>';
                     }
                     

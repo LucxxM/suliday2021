@@ -7,7 +7,7 @@ if (!empty($_SESSION)) {
 
     //? 2. On réalise une requête SQL de récupération de données (SELECT) qui utilise l'id de l'utilisateur connecté pour récupérer toutes sa ligne dans la BDD
     $sqlAdmin = "SELECT * FROM users WHERE id = '{$user_id}'";
-    $sqlUser = "SELECT * FROM users WHERE role != 'ROLE_ADMIN' ";
+    $sqlUser = "SELECT * FROM users WHERE role != 'ROLE ADMIN' ";
 
     //? 3. On effectue la requête via PDO sur la base de données.
     $resultAdmin = $connect->query($sqlAdmin);
@@ -19,7 +19,7 @@ if (!empty($_SESSION)) {
         // $user = $connect->query($sql)->fetch(PDO::FETCH_ASSOC);
 
 
-        if ($admin['role'] === 'ROLE_USER') {
+        if ($admin['role'] === 'ROLE USER') {
             echo '<div class="is-flex is-justify-content-center is-align-content-center"><a href="index.php" class="button is-danger mt-6"> Vous ne pouvez pas accèder à cette page</a></div>';
         }
         
