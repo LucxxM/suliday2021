@@ -36,6 +36,7 @@ if (!empty($_SESSION)) {
                     if ($user['role'] === 'ROLE_ADMIN') {
                         echo '<a href="pageadmin.php" class="button"> Accéder à l\'espace administrateur </a>';
                     }
+                    
                     ?>
                 </div>
             </div>
