@@ -32,6 +32,7 @@ if (!empty($_SESSION)) {
                         Voir mes articles publiés
                     </a>
                     <a href="addbien.php" class="button"> Ajouter un article </a>
+                    <a class="button is-danger" href="supprimer.php?id=<?php echo $user['id'] ?>">Se desinscrire</a>
                     <?php
                     if ($user['role'] === 'ROLE_ADMIN') {
                         echo '<a href="pageadmin.php" class="button"> Accéder à l\'espace administrateur </a>';

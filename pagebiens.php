@@ -49,7 +49,7 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
                 <p><?php echo $product['categories_name']; ?></p>
                 <p><?php echo $product['created_at']; ?></p>
                 <p>Vendu par : <?php echo $product['username']; ?></p>
-                <a class="button is-dark modal-button" href="pagebien.php?id=<?php echo $product['products_id']; ?>" class="card-link btn btn-primary">Afficher article</a>
+                <a class="button is-dark modal-button" href="pagebien.php?id=<?php echo $product['products_id']; ?>">Afficher article</a>
               </div>
             </div>
           </div>

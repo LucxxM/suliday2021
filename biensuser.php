@@ -41,12 +41,14 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
               <div class="content">
                 <h4><?php echo $product['products_name'];?></h4>
                 <p><?php echo $product['products_description']; ?></p>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><?php echo $product['products_price']; ?>€</li>
-                </ul>
+                
+                <p class="list-group-item"><?php echo $product['products_price']; ?>€</p>
+                
                 <p><?php echo $product['categories_name']; ?></p>
                 <p><?php echo $product['created_at']; ?></p>
                 <a class="button is-dark modal-button" href="pagebien.php?id=<?php echo $product['products_id']; ?>" class="card-link btn btn-primary">Afficher article</a>
+                <a class="button is-danger" href="supprimerb.php?id=<?php echo $product['products_id'] ?>">Supprimer</a>
+                <a href="./editadminb.php?id=<?php echo $product['products_id'] ?>" class="button is-warning">Editer</a>
               </div>
             </div>
           </div>

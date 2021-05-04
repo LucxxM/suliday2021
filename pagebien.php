@@ -19,7 +19,7 @@ $product = $connect->query($sqlProduct)->fetch(PDO::FETCH_ASSOC);
             <figure class="image is-4by3">
                 <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="Placeholder image">
             </figure>
-            <h1><?php echo $product['products_name']; ?>
+            <h1 class="label"><?php echo $product['products_name']; ?>
             </h1>
             <p>Catégorie : <?php echo $product['categories_name']; ?>
             </p>
@@ -29,7 +29,7 @@ $product = $connect->query($sqlProduct)->fetch(PDO::FETCH_ASSOC);
             </p>
             <p>Annonce publiée le : <?php echo $product['created_at']; ?>
             </p>
-            <button class="button"><?php echo $product['products_price']; ?> € </button>
+            <div class="label"><?php echo $product['products_price']; ?> € </div>
         </div>
     </div>
 </main>

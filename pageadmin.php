@@ -47,8 +47,8 @@ if (!empty($_SESSION)) {
                       <h4><?php echo $user['username'];?></h4>
                       <p><?php echo $user['email']; ?></p>
                       <p><?php echo $user['role']; ?></p>
-                      <a class="button is-danger">Supprimer</a>
-                      <a href="./editadminu.php" class="button is-dark">Editer</a>
+                      <a class="button is-danger" href="supprimer.php?id=<?php echo $user['id'] ?>">Supprimer</a>
+                      <a href="editadminu.php?id=<?php echo $user['id'] ?>" class="button is-dark">Editer</a>
                       
                   </div>
                   </div>
@@ -105,8 +105,8 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
                 <p><?php echo $product['categories_name']; ?></p>
                 <p><?php echo $product['created_at']; ?></p>
                 <p>Vendu par : <?php echo $product['username']; ?></p>
-                <a class="button is-danger">Supprimer</a>
-                <a href="./editadminb.php" class="button is-dark">Editer</a>
+                <a class="button is-danger" href="supprimerb.php?id=<?php echo $product['products_id'] ?>">Supprimer</a>
+                <a href="./editadminb.php?id=<?php echo $product['products_id'] ?>" class="button is-dark">Editer</a>
               </div>
             </div>
           </div>
@@ -133,18 +133,3 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
  
 </html>
 
-
-    <script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>  
-    <script src="../js/wild.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-    //The first argument are the elements to which the plugin shall be initialized
-    //The second argument has to be at least a empty object or a object with your desired options
-    OverlayScrollbars(document.querySelectorAll("body"), { });
-    });
-    </script>  
-  </body>
- 
-</html>
