@@ -11,7 +11,7 @@ if(!empty($user_id)){
 
     //? 4. On récupère les données avec un fetch, en précisant que l'on souhaite obtenir les données sous forme de tableau associatif (PDO::FETCH_ASSOC)
     if ($user = $resultUser->fetch(PDO::FETCH_ASSOC)) {
-        if($user['role']==='ROLE_ADMIN'){
+        if($user['role']==='ROLE ADMIN'){
 
             $pdostats = $connect->prepare('DELETE FROM products WHERE products_id =:num LIMIT 1');
             
@@ -26,7 +26,7 @@ if(!empty($user_id)){
             else {
                 echo '<p>echec de la suppression</p>';
             }
-        } elseif($user['role']==='ROLE_USER'){
+        } elseif($user['role']==='ROLE USER'){
             $pdostats = $connect->prepare('DELETE FROM products WHERE products_id =:num AND author=:id LIMIT 1');
             
             $pdostats->bindvalue(':num', $_GET['id'], PDO::PARAM_INT);

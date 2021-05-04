@@ -1,17 +1,48 @@
+
 <?php require 'inc/header.php'; ?>
 <?php
+$user_id= $_SESSION['id'];
 
-$pdostats = $objetPdo->prepare('DELETE FROM users WHERE id =:num LIMIT 1');
+if(!empty($user_id)){
+    
+    $sqlUser = "SELECT * FROM users WHERE id = '{$user_id}'";
 
-$pdostats->bindvalue(':num', $_GET['id'], PDO::PARAM_INT);
+    //? 3. On effectue la requête via PDO sur la base de données.
+    $resultUser = $connect->query($sqlUser);
 
-$executeIsOk = $pdostats->execute();
+    //? 4. On récupère les données avec un fetch, en précisant que l'on souhaite obtenir les données sous forme de tableau associatif (PDO::FETCH_ASSOC)
+    if ($user = $resultUser->fetch(PDO::FETCH_ASSOC)) {
+        if($user['role']==='ROLE ADMIN'){
 
-if($executeIsOk) {
+            $pdostats = $connect->prepare('DELETE FROM users WHERE id =:num LIMIT 1');
 
-    echo '<p>l\'utilisateur à bien été supprimé</p>';
-}
-else {
-    echo '<p>echec de la suppression</p>';
+            $pdostats->bindvalue(':num', $_GET['id'], PDO::PARAM_INT);
+            
+            $executeIsOk = $pdostats->execute();
+            
+            if($executeIsOk) {
+            
+                echo '<p>l\'utilisateur à bien été supprimé</p>';
+            }
+            else {
+                echo '<p>echec de la suppression</p>';
+            }
+        } elseif($user['role']==='ROLE USER'){
+            $pdostats = $connect->prepare('DELETE FROM users WHERE id =:num LIMIT 1');
+
+            $pdostats->bindvalue(':num', $_GET['id'], PDO::PARAM_INT);
+
+            $executeIsOk = $pdostats->execute();
+
+            if($executeIsOk) {
+
+                echo '<p>l\'utilisateur à bien été supprimé</p>';
+            }
+            else {
+                echo '<p>echec de la suppression</p>';
+            }
+
+        }
+    }
 }
 
