@@ -2,37 +2,33 @@
 
 
 <?php
-//! Récupérer toutes les infos relatives à l'utilisateur connecté depuis la base de données. En ce moment dans le token de session on possède l'id de l'utilisateur, son username et son email. Il faut éventuellement récupérer tout le reste depuis la base de données.
 
 if (!empty($_SESSION)) {
-    //? 1. On insère l'id de session dans une variable qui va servir pour une requête SQL si il y a un utilisateur connecté
     $user_id = $_SESSION['id'];
 
-    //? 2. On réalise une requête SQL de récupération de données (SELECT) qui utilise l'id de l'utilisateur connecté pour récupérer toutes sa ligne dans la BDD
     $sqlUser = "SELECT * FROM users WHERE id = '{$user_id}'";
 
-    //? 3. On effectue la requête via PDO sur la base de données.
     $resultUser = $connect->query($sqlUser);
 
-    //? 4. On récupère les données avec un fetch, en précisant que l'on souhaite obtenir les données sous forme de tableau associatif (PDO::FETCH_ASSOC)
     if ($user = $resultUser->fetch(PDO::FETCH_ASSOC)) {
-        // $user = $connect->query($sql)->fetch(PDO::FETCH_ASSOC);
 ?>
 
-        <main class="is-flex is-justify-content-center is-align-content-center">
+        <section class="is-flex is-justify-content-center is-align-content-center">
         
             <div class="box has-text-centered column is-half mt-6">
                 <div class="field">
-                    <!-- //* Affichage des infos username et role récupérées depuis la BDD -->
-                    <h3 class="label">Bienvenue <?php echo $user['username']; ?>
+                    <h3 class="label">Bienvenue : <?php echo $user['username']; ?>
                     </h3>
-                    <p>Vous possédez le role <?php echo $user['role']; ?></p>
+                    <p class="mt-6">Vous possédez le role : <?php echo $user['role']; ?></p>
+                    <p class="mt-6">Votre email pour ce compte : <?php echo $user['email']; ?></p>
                 </div>
-                <div class="field">
+                <div class="mt-6">
                     <a href="biensuser.php" class="button button is-dark" >
                         Voir mes articles publiés
                     </a>
                     <a href="addbien.php" class="button"> Ajouter un article </a>
+                </div>
+                <div class="mt-4">
                     <a class="button is-danger" href="supprimer.php?id=<?php echo $user['id'] ?>">Se desinscrire</a>
                     <?php
                     if ($user['role'] === 'ROLE ADMIN') {
@@ -42,7 +38,7 @@ if (!empty($_SESSION)) {
                     ?>
                 </div>
             </div>
-        </main>
+        </section>
     <?php
     } else {
         echo " Erreur de connexion, veuillez vous reconnecter";
@@ -66,8 +62,6 @@ if (!empty($_SESSION)) {
     <script src="../js/wild.js"></script>
         <script>
         document.addEventListener("DOMContentLoaded", function() {
-        //The first argument are the elements to which the plugin shall be initialized
-        //The second argument has to be at least a empty object or a object with your desired options
         OverlayScrollbars(document.querySelectorAll("body"), { });
         });
         </script>  

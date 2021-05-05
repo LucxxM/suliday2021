@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <title>Document</title>
+  <title>Stuliday</title>
 </head>
 <body>
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
@@ -28,7 +28,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu ml-6">
     <div class="navbar-end">
-      <a class="navbar-item ml-6" href="http://localhost/stuliday2021/">
+      <a class="navbar-item " href="http://localhost/stuliday2021/">
         Accueil
       </a>
 

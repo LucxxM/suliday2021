@@ -35,6 +35,7 @@ if (isset($_POST['user_submit']) && !empty($_POST['username']) && !empty($_POST[
             $sth->bindValue(':users_name', $username);
             $sth->bindValue(':users_role', $role);
             $sth->bindValue(':id', $id);
+         
 
             
             $sth->execute();
@@ -46,6 +47,7 @@ if (isset($_POST['user_submit']) && !empty($_POST['username']) && !empty($_POST[
             echo 'Erreur: ' . $error->getMessage();
         }
 }
+  
 ?>
 
 <main class="field">

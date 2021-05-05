@@ -45,7 +45,7 @@ if (isset($_POST['product_submit']) && !empty($_POST['product_name']) && !empty(
         }
     }
     
-}
+
 ?>
 <section class="is-flex is-justify-content-center is-align-content-center">
     <div class="box has-text-centered column is-half">
@@ -56,7 +56,7 @@ if (isset($_POST['product_submit']) && !empty($_POST['product_name']) && !empty(
             </div>
             <div class="field">
                 <label class="label"for="InputDescription">Description de l'article</label>
-                <textarea class="textarea has-text-centered" id="InputDescription" rows="9" cols="9" name="product_description" required></textarea>
+                <textarea class="textarea has-text-centered" id="InputDescription" placeholder="Entrez la description du bien" rows="9" cols="9" name="product_description" required></textarea>
             </div>
             <div class="field">
                 <label class="label"for="InputPrice">Prix de l'article</label>
@@ -65,10 +65,12 @@ if (isset($_POST['product_submit']) && !empty($_POST['product_name']) && !empty(
             <div class="field">
                 <label class="label"for="InputCategory">Catégorie de l'article</label>
                 <select class="form-control" id="InputCategory" name="product_category" required>
+                <option selected>Selectionnez le categorie </option>
                     <?php
                 
                     foreach ($categories as $category) {
                     ?>
+                        
                         <option value="<?php echo $category['categories_id']; ?>">
                             <?php echo $category['categories_name']; ?>
                         </option>
@@ -82,6 +84,12 @@ if (isset($_POST['product_submit']) && !empty($_POST['product_name']) && !empty(
         </form>
     </div>
 </section>
+<?php 
 
+}else {
+    echo "<div class='is-flex is-justify-content-center is-align-content-center has-background-danger'><p>Impossible de poster une annonce lorsque vous êtes hors-ligne</p></div>";
+}
+
+?>
 </body>
 </html>
