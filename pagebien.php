@@ -1,19 +1,14 @@
 <?php require 'inc/header.php'; ?>
 
-<!-- //! Affichage d'un produit en détails -->
 <?php
 
-//? J'insère la valeur de l'id de ma requête GET dans une variable qui va me servir à récupérer un produit depuis la BDD
 $id = $_GET['id'];
 
-//? Création de ma requête SQL. Vu que j'ai des colonnes qui font référence à d'autres tables, je dois ajouter des jointures sur category et author. Je rajoute aussi la condition WHERE products_id = {$id} afin de récupérer le produit souhaité
 $sqlProduct = "SELECT p.*, u.username, c.categories_name FROM products AS p LEFT JOIN users AS u ON p.author = u.id LEFT JOIN categories AS c ON p.category = c.categories_id WHERE p.products_id = {$id} ";
 
-//? Le résultat de ma requête est affiché dans un tableau associatif à l'aide du chaînage de méthodes.
 $product = $connect->query($sqlProduct)->fetch(PDO::FETCH_ASSOC);
 ?>
-<!-- //? Ici pas besoin de boucle, puisque je ne récupère qu'un seul produit. -->
-<main class="is-flex is-justify-content-center is-align-content-center">
+<section class="is-flex is-justify-content-center is-align-content-center">
     <div class="box has-text-centered column is-half">
         <div class="col-12">
             <figure class="image is-4by3">
@@ -32,4 +27,4 @@ $product = $connect->query($sqlProduct)->fetch(PDO::FETCH_ASSOC);
             <div class="label"><?php echo $product['products_price']; ?> € </div>
         </div>
     </div>
-</main>
+</section>

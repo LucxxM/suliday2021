@@ -20,16 +20,17 @@ if (!empty($_SESSION)) {
 ?>
 
         <main class="is-flex is-justify-content-center is-align-content-center">
-            <div class="box has-text-centered column is-half">
+        
+            <div class="box has-text-centered column is-half mt-6">
                 <div class="field">
                     <!-- //* Affichage des infos username et role récupérées depuis la BDD -->
-                    <h3>Bienvenue <?php echo $user['username']; ?>
+                    <h3 class="label">Bienvenue <?php echo $user['username']; ?>
                     </h3>
                     <p>Vous possédez le role <?php echo $user['role']; ?></p>
                 </div>
                 <div class="field">
                     <a href="biensuser.php" class="button button is-dark" >
-                        Voir mes articles publiészzz
+                        Voir mes articles publiés
                     </a>
                     <a href="addbien.php" class="button"> Ajouter un article </a>
                     <a class="button is-danger" href="supprimer.php?id=<?php echo $user['id'] ?>">Se desinscrire</a>

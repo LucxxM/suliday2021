@@ -35,7 +35,6 @@ if (!empty($_SESSION)) {
           </section>
           <section class="is-flex is-flex-wrap-wrap">
               <?php
-              //? Je veux afficher tous mes produits, selon le même modèle, donc je fais une boucle, et j'insère les données dynamiques dans une carte sur laquelle je ferais une boucle. Résultat: J'obtiens autant de cartes que de produits, et toutes les cartes respectent le même format HTML.
               foreach ($users as $user) {
               ?>
               <div class="column is-4">
@@ -63,12 +62,9 @@ if (!empty($_SESSION)) {
     
 
 <?php
-//! Affichage de tous les produits. Il faudra une requête SQL qui récupère tous les produits, et qui les affiche dans des cartes séparées.
 
-//? Création de ma requête SQL. Vu que j'ai des colonne qui font référence à d'autres tables, je dois ajouter des jointures sur category et author.
 $sqlProducts = "SELECT p.*, u.username, c.categories_name FROM products AS p LEFT JOIN users AS u ON p.author = u.id LEFT JOIN categories AS c ON p.category = c.categories_id ORDER By created_at DESC";
 
-//? Le résultat de ma requête est affiché dans un tableau associatif à l'aide du chaînage de méthodes.
 $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -85,7 +81,6 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
     
     <section class="is-flex is-flex-wrap-wrap">
         <?php
-        //? Je veux afficher tous mes produits, selon le même modèle, donc je fais une boucle, et j'insère les données dynamiques dans une carte sur laquelle je ferais une boucle. Résultat: J'obtiens autant de cartes que de produits, et toutes les cartes respectent le même format HTML.
         foreach ($products as $product) {
         ?>
         <div class="column is-4">
@@ -124,8 +119,6 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
     <script src="../js/wild.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
-    //The first argument are the elements to which the plugin shall be initialized
-    //The second argument has to be at least a empty object or a object with your desired options
     OverlayScrollbars(document.querySelectorAll("body"), { });
     });
     </script>  

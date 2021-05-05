@@ -6,10 +6,8 @@ if(!empty($user_id)){
     
     $sqlUser = "SELECT * FROM users WHERE id = '{$user_id}'";
 
-    //? 3. On effectue la requête via PDO sur la base de données.
     $resultUser = $connect->query($sqlUser);
 
-    //? 4. On récupère les données avec un fetch, en précisant que l'on souhaite obtenir les données sous forme de tableau associatif (PDO::FETCH_ASSOC)
     if ($user = $resultUser->fetch(PDO::FETCH_ASSOC)) {
         if($user['role']==='ROLE ADMIN'){
 

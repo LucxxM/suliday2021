@@ -36,7 +36,7 @@ if(!empty($user_id)){
 
             if($executeIsOk) {
 
-                echo '<p>l\'utilisateur à bien été supprimé</p>';
+                echo '<p>vous êtes désinscrit</p>';
             }
             else {
                 echo '<p>echec de la suppression</p>';

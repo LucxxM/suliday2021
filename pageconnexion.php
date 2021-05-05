@@ -5,17 +5,13 @@
 <?php
 $alert = false;
 
-//? Etape 1 : Vérification du remplissage du formulaire
 if (!empty($_POST['email_login']) && !empty($_POST['password_login']) && isset($_POST['submit_login'])) {
-    //? Etape 2 : Initialisation des variables + assainissement via htmlspecialchars
     $email = htmlspecialchars($_POST['email_login']);
     $password = htmlspecialchars($_POST['password_login']);
-    // var_dump($password);
     try {
         $sqlMail = "SELECT * FROM users WHERE email = '{$email}'";
         $resultMail = $connect->query($sqlMail);
         $user = $resultMail->fetch(PDO::FETCH_ASSOC);
-        // var_dump($user);
         if ($user) {
             $dbpassword = $user['password'];
             if (password_verify($password, $dbpassword)) {
