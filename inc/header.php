@@ -10,12 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="assets/css/style.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <title>Stuliday</title>
+  <title>Stuliday - <?php echo $page ?></title>
 </head>
 <body>
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a href="">
+    <a href="index.php">
       <img src="./assets/images/logo-immobilier-4.png" width="100" height="100">
     </a>
 

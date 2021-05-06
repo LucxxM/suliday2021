@@ -1,3 +1,4 @@
+<?php $page = 'login'; ?>
 <?php require 'inc/header.php'; ?>
 
 
@@ -46,7 +47,7 @@ if (!empty($_POST['email_login']) && !empty($_POST['password_login']) && isset($
 
 <div class='formulaire'>
 
-
+    
     <form class="box is-light"  action="#" method="POST">
     <?php echo $alert ? "<br><div class='has-background-{$type} mb-6'>{$message}</div>" : ''; ?>
       <div class="field">

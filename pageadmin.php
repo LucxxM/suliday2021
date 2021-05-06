@@ -1,5 +1,5 @@
 <?php require 'inc/header.php'; ?>
-
+<div class="is-flex is-justify-content-center is-align-content-center"><a class="button is-dark mt-4" href="addcategory.php">Ajouter une catégorie</a></div>
 <?php
 if (!empty($_SESSION)) {
     //? 1. On insère l'id de session dans une variable qui va servir pour une requête SQL si il y a un utilisateur connecté
@@ -7,7 +7,7 @@ if (!empty($_SESSION)) {
 
     //? 2. On réalise une requête SQL de récupération de données (SELECT) qui utilise l'id de l'utilisateur connecté pour récupérer toutes sa ligne dans la BDD
     $sqlAdmin = "SELECT * FROM users WHERE id = '{$user_id}'";
-    $sqlUser = "SELECT * FROM users WHERE role != 'ROLE_ADMIN' ";
+    $sqlUser = "SELECT * FROM users WHERE role != 'ROLE ADMIN' ";
 
     //? 3. On effectue la requête via PDO sur la base de données.
     $resultAdmin = $connect->query($sqlAdmin);
@@ -19,7 +19,7 @@ if (!empty($_SESSION)) {
         // $user = $connect->query($sql)->fetch(PDO::FETCH_ASSOC);
 
 
-        if ($admin['role'] === 'ROLE_USER') {
+        if ($admin['role'] === 'ROLE USER') {
             echo '<div class="is-flex is-justify-content-center is-align-content-center"><a href="index.php" class="button is-danger mt-6"> Vous ne pouvez pas accèder à cette page</a></div>';
         }
         
@@ -112,6 +112,8 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
     }
   }
         ?>
+
+        
     </section>
     <script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

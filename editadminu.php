@@ -56,21 +56,21 @@ if (isset($_POST['user_submit']) && !empty($_POST['username']) && !empty($_POST[
             <form class="box has-text-centered column is-half" action="#" method="POST">
                 <div class="field">
                     <label class="label" for="InputName">Nom</label>
-                    <input class="input has-text-centered" type="text" class="form-control" id="InputName" placeholder="Nom de votre article" name="username" value="<?php echo $user['username']; ?>" required>
+                    <input class="input" type="text" class="form-control" id="InputName" placeholder="Nom de votre article" name="username" value="<?php echo $user['username']; ?>" required>
                 </div>
                 <div class="form-group">
                     <label class="label" for="InputCategory">role</label>
-                    <select class="form-control" id="InputCategory" name="role" required>
+                    <select class="input" id="InputCategory" name="role" required>
                         <?php
-                          if($user['role'] === 'ROLE_ADMIN'){
+                          if($user['role'] === 'ROLE ADMIN'){
                         ?>
-                            <option value="ROLE_ADMIN" selected>Admin</option>
-                            <option value="ROLE_USER">User</option>
+                            <option value="ROLE ADMIN" selected>Admin</option>
+                            <option value="ROLE USER">User</option>
                         <?php
                           }else{
                         ?>
-                            <option value="ROLE_ADMIN">Admin</option>
-                            <option value="ROLE_USER" selected>User</option>
+                            <option value="ROLE ADMIN">Admin</option>
+                            <option value="ROLE USER" selected>User</option>
                         <?php
                           }
                         ?>

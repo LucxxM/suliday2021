@@ -1,3 +1,4 @@
+<?php $page = 'profil'; ?>
 <?php require 'inc/header.php'; ?>
 
 

@@ -1,3 +1,4 @@
+<?php $page = 'signup'; ?>
 <?php require 'inc/header.php'; ?>
 
 <?php

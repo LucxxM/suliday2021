@@ -1,3 +1,4 @@
+<?php $page = 'Homepage'; ?>
 <?php require 'inc/header.php'; ?>
 <div class="column"></div>
 <div class="column"></div>

@@ -20,3 +20,10 @@ if (isset($_GET['logout'])) {
     session_destroy();
     header('Location: index.php');
 }
+
+if(empty($_SESSION['id']) && ((!isset($page)) || $page != 'Homepage' && $page != 'bien' && $page != 'login' && $page != 'signup')){
+    header('Location:pageconnexion.php');
+    
+}
+?>
+

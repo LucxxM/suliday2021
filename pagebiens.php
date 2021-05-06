@@ -1,3 +1,4 @@
+<?php $page = 'bien'; ?>
 <?php require 'inc/header.php'; ?>
 
 <?php
@@ -19,11 +20,16 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
         </div>
       </div>
     </section>
-    <div class="box has-background-warning mt-5">
-      <p class="has-text-centered">
-        <a href="addbien.php" class="tag is-dark">Créer</a> Vos nouvelles annonces!!
-      </p>
-    </div>
+    <?php if(!empty($_SESSION['id'])){
+    ?>
+      <div class="box has-background-warning mt-5">
+        <p class="has-text-centered">
+          <a href="addbien.php" class="tag is-dark">Créer</a> Vos nouvelles annonces!!
+        </p>
+      </div>
+    <?php
+    }
+    ?>
 
     <?php
     $sql = 'SELECT * FROM categories';
@@ -60,7 +66,7 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <input type="submit" value="Recherche" name="search_form" class="button is-dark mt-4">
         <?php if (isset($search)) {
-          echo '<a href="pagebiens.php" class="button is-warning mt-4">Reset</a>';
+          echo '<a href="pagebiens.php" class="button is-warning mt-4">Tout afficher</a>';
       } ?>
           </div>
       </form>
