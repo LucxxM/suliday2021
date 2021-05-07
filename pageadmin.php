@@ -86,8 +86,17 @@ $products = $connect->query($sqlProducts)->fetchAll(PDO::FETCH_ASSOC);
         <div class="column is-4">
           <div class="card is-shady">
             <div class="card-image">
-              <figure class="image is-4by3">
-                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1267&q=80" alt="Placeholder image">
+              <figure class="image">
+              
+                <?php if (is_null($product['image']) || empty($product['image'])) {
+                    echo "<img src='./public/uploads/noImg.png' alt='product_image' width='400'/> ";
+                } else {
+                ?>
+                    <img src="./public/uploads/<?php echo $product['image']; ?>" alt='<?php echo $product['products_name']; ?>' width='200' />
+                <?php
+                }
+                ?>
+            
               </figure>
             </div>
             <div class="card-content">
